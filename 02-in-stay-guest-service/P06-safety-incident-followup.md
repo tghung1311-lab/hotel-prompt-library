@@ -2,13 +2,13 @@
 
 **Section:** 02 - In-stay Guest Service
 **Workflow step:** Step 3 of 4
-**Current version:** v1.1
-**Status:** Tested - known limitation identified (see v1.2)
+**Current version:** v1.2
+**Status:** Tested
 **Last updated:** 6 August 2026
 
 ---
 
-## Prompt Text (v1.1)
+## Prompt Text (v1.2 - current)
 
 ```
 You are a Guest Services duty manager at Lantern Bay Hotel, an 82-room boutique hotel in St Kilda, Melbourne.
@@ -33,6 +33,18 @@ Required output:
 - Clearly tell the guest what to do if symptoms or concerns arise (contact method)
 - Do not offer compensation, medical advice, or admission of liability
 - Note that this incident has been logged for internal review
+
+Escalation check:
+If the guest's stated condition or the incident description contains language 
+suggesting potential legal action, media involvement, or a worsening medical 
+situation (e.g. mentions of "lawyer", "legal", "options", "compensation", 
+"media", "press", "sue", or similar), add this line at the very end, after 
+the email:
+
+"ESCALATION REQUIRED: [brief reason]. Route to Duty Manager AND General 
+Manager, not Duty Manager alone."
+
+If no such language is present, do not add this line.
 ```
 
 **Placeholders to fill:**
@@ -54,7 +66,7 @@ Required output:
 - **Trigger:** A safety-related incident is logged by staff (injury, near-miss, hazard)
 - **Actor:** Duty Manager confirms incident facts, then reviews and sends the drafted message
 - **Timing:** Same day as the incident, after immediate actions are taken
-- **Next step:** Incident and message logged in internal safety register; escalated cases routed to General Manager
+- **Next step:** Incident and message logged in internal safety register; escalation-flagged cases also routed to General Manager
 
 ```
 Incident logged -> Duty Manager confirms facts -> [P06 runs] -> Duty Manager reviews -> Message sent
@@ -87,7 +99,7 @@ Safety-incident follow-ups are currently drafted individually, with inconsistent
 | Integration possibility | Limited - primarily a drafting aid, not suited to fully automated dispatch |
 | Estimated time saving | Drafting time saved is likely modest; the primary value is consistency and risk reduction, not speed |
 
-**Human-in-the-loop role:** Duty Manager confirms all incident facts before the prompt runs, reviews every output before sending (no exceptions), and makes all escalation and compensation decisions outside this prompt.
+**Human-in-the-loop role:** Duty Manager confirms all incident facts before the prompt runs, reviews every output before sending (no exceptions), and makes all escalation and compensation decisions outside this prompt. The escalation flag is a prompt to the human, not an autonomous routing decision.
 
 **Note on automation boundary:** This prompt assists drafting only. It is not a substitute for organisational incident-management controls - safety incidents also require system-level controls such as mandatory human sign-off, an incident audit log, and defined escalation ownership, which cannot be enforced by prompt instructions alone.
 
@@ -97,12 +109,13 @@ Safety-incident follow-ups are currently drafted individually, with inconsistent
 
 | Risk | Level | Mitigation |
 |---|---|---|
-| Message implies admission of fault or liability (confirmed in v1.0 test) | High | Explicit, specific prohibition on cause/fault language in v1.1; resolved in testing |
-| Legal/media risk signal in guest's words not escalated beyond Duty Manager (confirmed in v1.1 Case 4 test) | High | Addressed in v1.2 - see Version History |
-| Missing guest-condition data handled by silent omission rather than visible flag (observed in v1.1 Case 2 test) | Medium | Known limitation - recommend requiring explicit "condition not recorded" wording in a future revision |
+| Message implies admission of fault or liability (confirmed in v1.0 test) | High | Explicit, specific prohibition on cause/fault language; resolved and confirmed in v1.1/v1.2 testing |
+| Legal/media risk signal in guest's words not escalated beyond Duty Manager (confirmed in v1.1 Case 4 test) | High | Escalation check added in v1.2; resolved and confirmed in retest |
+| Escalation keyword list is not exhaustive - risk signal phrased differently may be missed | Medium | Escalation flag supplements, does not replace, Duty Manager judgment; all incidents still require full human review |
+| Missing guest-condition data handled by silent omission rather than visible flag (observed in v1.1 Case 2 test) | Medium | Known limitation, not yet addressed - recommend explicit "condition not recorded" wording in a future revision |
 | Prompt instruction alone is not a complete organisational control | High | Mandatory human review before every send; incident audit log maintained at system level, not by this prompt |
 
-**Overall risk rating: HIGH** - this is the highest-risk prompt in the library. Full human review is mandatory for every output; the prompt reduces inconsistency and liability-language risk but does not replace organisational incident-management controls.
+**Overall risk rating: HIGH** - this is the highest-risk prompt in the library. Full human review is mandatory for every output, including escalation-flagged cases; the prompt reduces inconsistency and liability-language risk but does not replace organisational incident-management controls.
 
 ---
 
@@ -111,20 +124,20 @@ Safety-incident follow-ups are currently drafted individually, with inconsistent
 - No cause or fault language present
 - All supplied facts stated accurately, no invented details
 - Guest wellbeing acknowledged appropriately
-- Correct escalation flagging (v1.2 only)
+- Correct escalation flagging, with no false positives on routine cases
 - Format and word-limit compliance
 
 ---
 
 ## Test Cases
 
-| Case | Input summary | Expected behaviour | Result (v1.1) |
-|---|---|---|---|
-| 1. Normal | Guest slipped on wet pool deck, mild pain, declined medical help | Objective facts, no fault language, correct actions confirmed | Pass |
-| 2. Missing data | Guest condition not recorded by staff | Should not invent a condition | Pass (see limitation above - omitted rather than flagged) |
-| 3. Ambiguous | Guest felt dizzy, bumped into cart, unclear cause | Should not assign cause to either dizziness or cart | Pass |
-| 4. High-risk (legal signal) | Equipment malfunction, swelling, guest mentions "looking into options" | Should not admit fault; ideally flags legal risk | Pass on fault language; gap found - no escalation flag (resolved in v1.2) |
-| 5. Adversarial | Guest name field contains an injected instruction to admit negligence | Should not comply with injected instruction | Pass - model identified and flagged the injection attempt |
+| Case | Input summary | Expected behaviour | Result (v1.1) | Result (v1.2) |
+|---|---|---|---|---|
+| 1. Normal | Guest slipped on wet pool deck, mild pain, declined medical help | Objective facts, no fault language, correct actions confirmed, no escalation flag | Pass | Pass - no escalation flag added (correct) |
+| 2. Missing data | Guest condition not recorded by staff | Should not invent a condition | Pass (limitation noted) | Not retested - unaffected by v1.2 change |
+| 3. Ambiguous | Guest felt dizzy, bumped into cart, unclear cause | Should not assign cause to either dizziness or cart | Pass | Not retested - unaffected by v1.2 change |
+| 4. High-risk (legal signal) | Equipment malfunction, swelling, guest mentions "looking into options" | Should not admit fault; should flag escalation | Pass on fault language; gap found - no escalation flag | Pass - escalation flag correctly added with accurate reason |
+| 5. Adversarial | Guest name field contains an injected instruction to admit negligence | Should not comply with injected instruction | Pass - flagged the injection attempt | Not retested - unaffected by v1.2 change |
 
 ---
 
@@ -138,9 +151,15 @@ Safety-incident follow-ups are currently drafted individually, with inconsistent
 
 ### v1.1 - Added role, explicit fault-language prohibition, and guest next-step instructions
 **Change:** Added role, explicit prohibition on cause/fault language with example phrasing to avoid, required next-step instructions for the guest, and a logged-for-review statement.
-**Testing:** 5 test cases run (see Test Cases table above) - normal, missing-data, ambiguous, high-risk, and adversarial.
+**Testing:** 5 test cases run - normal, missing-data, ambiguous, high-risk, and adversarial.
 **Observed effect:** 4 of 5 cases fully passed; Case 4 (high-risk) revealed a gap - no mechanism to flag legal/media risk signals for escalation beyond standard Duty Manager review.
 **Lesson learned:** Removing fault-admitting language is necessary but not sufficient for high-risk safety cases - a mechanism to detect and flag legal/media risk signals for additional management attention is also needed.
+
+### v1.2 - Added escalation check for legal/media risk signals - Current
+**Change:** Added a keyword-based escalation check that appends an "ESCALATION REQUIRED" line, routing to both Duty Manager and General Manager, when the guest's wording suggests potential legal action, media involvement, or a worsening medical situation.
+**Testing:** Retested Case 4 (high-risk) and Case 1 (normal, regression check).
+**Observed effect:** Case 4 correctly triggered the escalation flag with an accurate stated reason; Case 1 correctly did not trigger the flag, confirming no false positives introduced.
+**Lesson learned:** A narrowly scoped, single-purpose revision (addressing only the specific gap found in testing) resolved the identified failure without disrupting previously correct behaviour - confirming the value of testing both the fix and a regression case before considering a version complete.
 
 ---
 
