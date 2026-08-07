@@ -100,6 +100,24 @@ Pre-arrival questions (pet policy, room amenities, parking, etc.) are currently 
 
 ---
 
+## Evaluation Criteria
+
+- Both parts of a multi-part question answered
+- No invented policies or amenities
+- Correct escalation for unanswerable questions
+- Booking details referenced accurately where relevant
+- Word limit compliance
+
+---
+
+## Test Cases
+
+| Case | Input summary | Expected behaviour | Result |
+|---|---|---|---|
+| 1. Normal | Guest asks about pet policy and bathtub availability, Standard room | Both questions answered accurately from supplied policy data | Pass |
+
+---
+
 ## Version History
 
 ### v1.0 - Initial draft
