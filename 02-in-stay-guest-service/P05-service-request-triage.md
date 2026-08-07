@@ -106,6 +106,25 @@ Service requests are currently triaged manually by whichever staff member answer
 
 ---
 
+## Evaluation Criteria
+
+- Valid JSON matching required schema
+- Category chosen from fixed list only
+- Urgency and safety flag correctly applied per stated rules
+- No suggested remedies or compensation
+- Consistent classification across different urgency levels
+
+---
+
+## Test Cases
+
+| Case | Input summary | Expected behaviour | Result |
+|---|---|---|---|
+| 1. High urgency/safety | Blocked shower drain, water pooling, room 305, guest requested same-day fix | High urgency, safety flag true, routed to Engineering | Pass |
+| 2. Low urgency, routine | Guest requested extra towels and pillows, room 218, explicitly "no rush" | Low urgency, safety flag false, routed to Housekeeping | Pass |
+
+---
+
 ## Version History
 
 ### v1.0 - Initial draft
