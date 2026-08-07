@@ -103,6 +103,24 @@ Front Desk staff currently draft each confirmation manually, estimated at ~8-10 
 
 ---
 
+## Evaluation Criteria
+
+- All supplied booking details included accurately
+- No invented details (rates, policies, or promises)
+- Cancellation policy stated exactly as supplied
+- Correct branding and subject line format
+- Word limit compliance
+
+---
+
+## Test Cases
+
+| Case | Input summary | Expected behaviour | Result |
+|---|---|---|---|
+| 1. Normal | Full booking data supplied (guest, room, dates, rate, policy) | Complete, accurate, hotel-branded email with all details | Pass |
+
+---
+
 ## Version History
 
 ### v1.0 - Initial draft
