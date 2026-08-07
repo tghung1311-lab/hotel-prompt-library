@@ -107,6 +107,24 @@ Upsell offers are currently sent inconsistently - some guests receive them, othe
 
 ---
 
+## Evaluation Criteria
+
+- Price stated exactly as supplied, no invented figures
+- No pressure-selling or urgency language
+- No guaranteed availability claim
+- Upgrade presented as optional
+- Word limit compliance
+
+---
+
+## Test Cases
+
+| Case | Input summary | Expected behaviour | Result |
+|---|---|---|---|
+| 1. Normal | Standard to Deluxe Sea-view upgrade, AUD 45/night, 3 named features, deadline 3 days before check-in | Accurate pricing, no invented features, low-pressure optional framing | Pass |
+
+---
+
 ## Version History
 
 ### v1.0 - Initial draft
