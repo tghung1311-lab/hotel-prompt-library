@@ -4,7 +4,7 @@ A 10-prompt library supporting workflow automation for Lantern Bay Hotel, an 82-
 
 ## What This Library Does
 
-Lantern Bay Hotel currently handles most guest communications and internal reporting manually, resulting in delayed responses, inconsistent tone, and increased risk in sensitive situations (complaints, safety incidents). This reflects a broader industry pattern: Deloitte's 2025 European Hotel Industry and Investment Survey identifies workforce constraints as the hospitality sector's leading operational risk, alongside growing investment in automation to manage service delivery more efficiently (Deloitte, 2025). This library provides 10 tested, RACE-structured prompts across three connected workflow sections to address these operational gaps, while keeping humans in control of all compensation, escalation, and safety-related decisions.
+Lantern Bay Hotel currently handles most guest communications and internal reporting manually, resulting in delayed responses, inconsistent tone, and increased risk in sensitive situations (complaints, safety incidents). This reflects a broader industry pattern: Deloitte's 2025 European Hotel Industry and Investment Survey identifies workforce constraints as the hospitality sector's leading operational risk, alongside growing investment in automation to manage service delivery more efficiently (Deloitte, 2025a). This is consistent with broader findings that AI in hospitality is moving from experimentation toward measurable operational value in guest communications (Deloitte, 2025b). This library provides 10 tested, RACE-structured prompts across three connected workflow sections to address these operational gaps, while keeping humans in control of all compensation, escalation, and safety-related decisions.
 
 ## Library Summary Table
 
@@ -45,17 +45,17 @@ Reporting cycle -> P10 (feedback theme summary)
 
 ## Prompting Strategies Used
 
-- **RACE structure** (Role, Action, Context, Expected output) applied consistently across all 10 prompts, following the framework introduced in the unit's Week 2 tutorial.
+- **RACE structure** (Role, Action, Context, Expected output) applied consistently across all 10 prompts to ensure each prompt defines a clear role, a single precise action, sufficient business context, and a checkable expected output.
 - **Grounding constraints** ("using ONLY the information provided... do not invent") used in every prompt to reduce hallucination risk, particularly for pricing (P01, P02), policy (P03), and factual incident details (P04, P06).
 - **Structured output (JSON)** used in P05 to support system integration for automated ticket routing, rather than free-text output.
 - **Explicit scope restrictions** used to prevent the model from exceeding its intended role - e.g. P04 and P06 prohibit offering compensation, P05 and P08 prohibit suggesting remedies/operational changes beyond the task.
 - **Fault-language prohibition** developed specifically for P04 and P06 after testing revealed the model would use subtly liability-admitting language (e.g. "no guest should experience this") even when explicit compensation was already restricted.
 - **Escalation-check pattern** added to P04 and P06 (v1.2) after testing with legal-signal test cases revealed neither prompt originally differentiated a legally sensitive complaint from a routine one.
-- **Small-sample framing** used in P10 to prevent the model from overgeneralising conclusions from a small number of guest comments, consistent with the "overgeneralising small samples" risk identified in the unit's workshop guide.
+- **Small-sample framing** used in P10 to prevent the model from overgeneralising conclusions from a small number of guest comments.
 
 ## Risk and Automation Philosophy
 
-Automation levels and testing depth in this library are intentionally proportionate to risk, not applied uniformly. P04 and P06 (both rated Overall Risk: HIGH) received the most extensive testing - including adversarial (prompt injection) and legal-signal test cases - and are the only two prompts developed to v1.2. Lower-risk prompts (P01, P03, P09) required only one round of revision once grounding and format constraints were added. This reflects the unit's guidance that "complexity is not the goal" and that revisions should address specific, observed failures rather than be applied uniformly across all prompts.
+Automation levels and testing depth in this library are intentionally proportionate to risk, not applied uniformly. P04 and P06 (both rated Overall Risk: HIGH) received the most extensive testing - including adversarial (prompt injection) and legal-signal test cases - and are the only two prompts developed to v1.2. Lower-risk prompts (P01, P03, P09) required only one round of revision once grounding and format constraints were added.
 
 No prompt in this library is treated as a complete organisational control. Safety- and complaint-related prompts (P04, P06) explicitly require full human review before every send; none of the automation levels assigned imply autonomous action on compensation, legal, or safety matters.
 
@@ -65,10 +65,8 @@ Full version history, test cases, and observed outputs for each prompt are docum
 
 ## References
 
-- Anthropic. (2026). *RACE Framework for Business Prompting* [BUS4005 Week 2 Tutorial Workbook]. La Trobe University.
-- [Course provider]. (2026). *Workflow Automation Prompt Library: Worked Examples and Workshop Workbook* [BUS4005 Assessment 1 resource]. La Trobe University.
-- Deloitte. (2025). *The 2025 European Hotel Industry and Investment Survey*. Deloitte UK. https://www.deloitte.com/uk/en/Industries/consumer/research/european-hotel-industry-and-investment-survey.html
-- Deloitte. (2025). *Future of Hospitality: AI-Driven Industry Trends*. Deloitte US. https://www.deloitte.com/us/en/Industries/consumer/articles/future-of-hospitality-ai-innovation.html
+- Deloitte. (2025a). *The 2025 European Hotel Industry and Investment Survey*. Deloitte UK. https://www.deloitte.com/uk/en/Industries/consumer/research/european-hotel-industry-and-investment-survey.html
+- Deloitte. (2025b). *Future of Hospitality: AI-Driven Industry Trends*. Deloitte US. https://www.deloitte.com/us/en/Industries/consumer/articles/future-of-hospitality-ai-innovation.html
 
 ## Repository Structure
 
