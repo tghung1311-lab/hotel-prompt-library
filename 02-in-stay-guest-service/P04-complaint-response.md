@@ -106,13 +106,15 @@ Complaint responses are currently drafted individually by whichever staff member
 
 | Risk | Level | Mitigation |
 |---|---|---|
-| Model offers unauthorised compensation (confirmed in v1.0 test) | High | Explicit prohibition on mentioning refund/discount/compensation; resolved in v1.1 testing |
+| Model offers unauthorised compensation (confirmed in v1.0 test) | High | Explicit prohibition on mentioning any compensation; resolved in v1.1 testing |
 | Model uses subtle fault-admitting language (confirmed in v1.1 legal-signal test) | High | Explicit prohibition on indirect fault language added in v1.2; resolved in retest |
 | Legal/media risk signal not escalated beyond standard Duty Manager review (confirmed in v1.1 legal-signal test) | High | Escalation check added in v1.2; resolved in retest |
 | Escalation keyword list is not exhaustive - differently phrased risk signals may be missed | Medium | Escalation flag supplements, does not replace, Duty Manager judgment; full human review remains mandatory for every complaint |
+| Privacy / data security - complaint text and booking data sent to an external model | High | Limit input to only the fields required to draft a response (name, room, booking reference, complaint text) - do not paste full guest profile or payment data; route through an enterprise/private deployment with data-retention controls, not a public consumer AI tool |
+| Bias in tone or urgency assessment based on how a complaint is written (e.g. non-native English phrasing, brevity) | Low-Medium (untested) | Not yet stress-tested with complaints written in varying English proficiency or tone; recommend targeted bias testing across guest language patterns before wider rollout |
 | Complaint involves a legal, safety, or media-sensitive issue beyond this prompt's scope | High | For complaints overlapping with physical safety incidents, use P06 instead |
 
-**Overall risk rating: HIGH** - always requires human confirmation of available actions and full human review before sending; this prompt assists drafting only and does not make any commitment or escalation decisions itself.
+**Overall risk rating: HIGH** - always requires human confirmation of available actions and full human review before sending; this prompt assists drafting only and does not make any commitment, escalation, or data-handling decisions itself - privacy and bias considerations require system-level controls beyond the prompt.
 
 ---
 
