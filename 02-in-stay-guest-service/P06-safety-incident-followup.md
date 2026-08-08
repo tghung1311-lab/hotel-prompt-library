@@ -113,9 +113,11 @@ Safety-incident follow-ups are currently drafted individually, with inconsistent
 | Legal/media risk signal in guest's words not escalated beyond Duty Manager (confirmed in v1.1 Case 4 test) | High | Escalation check added in v1.2; resolved and confirmed in retest |
 | Escalation keyword list is not exhaustive - risk signal phrased differently may be missed | Medium | Escalation flag supplements, does not replace, Duty Manager judgment; all incidents still require full human review |
 | Missing guest-condition data handled by silent omission rather than visible flag (observed in v1.1 Case 2 test) | Medium | Known limitation, not yet addressed - recommend explicit "condition not recorded" wording in a future revision |
+| Privacy / data security - GUEST_CONDITION may contain health-adjacent information sent to an external model | High | Minimise data sent to only what is required for the follow-up (not full incident notes); in live deployment, route through an enterprise/private model deployment with data-retention controls, not a public consumer AI tool; access to incident data restricted to Duty Manager and above |
+| Bias in tone or perceived urgency based on guest name or language pattern | Low-Medium (untested) | Not yet stress-tested with guest profiles across different name origins or non-native English phrasing; recommend targeted bias testing before wider rollout |
 | Prompt instruction alone is not a complete organisational control | High | Mandatory human review before every send; incident audit log maintained at system level, not by this prompt |
 
-**Overall risk rating: HIGH** - this is the highest-risk prompt in the library. Full human review is mandatory for every output, including escalation-flagged cases; the prompt reduces inconsistency and liability-language risk but does not replace organisational incident-management controls.
+**Overall risk rating: HIGH** - this is the highest-risk prompt in the library. Full human review is mandatory for every output, including escalation-flagged cases; the prompt reduces inconsistency, liability-language risk, and now names privacy and bias as explicit risk categories requiring further system-level and testing attention - it does not replace organisational incident-management controls.
 
 ---
 
