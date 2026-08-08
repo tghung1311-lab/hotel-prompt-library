@@ -101,8 +101,10 @@ Service requests are currently triaged manually by whichever staff member answer
 | Category inconsistency across similar requests (confirmed issue in v1.0) | Medium | Fixed category list in v1.1 resolves this |
 | Invalid or malformed JSON breaks system integration | Medium | Schema validation on receipt; failed outputs routed to manual queue |
 | Request text is ambiguous or covers multiple issues | Medium | "Other" category and rationale field flag ambiguous cases for review |
+| Privacy / data security - guest request text and room number sent to an external model | Medium | Limit input to request text and room number only - no guest name or booking reference required for triage; route through an enterprise/private deployment with data-retention controls |
+| Bias in urgency classification based on how a request is phrased (e.g. non-native English, brevity, indirect phrasing) | Medium (untested) | This is the highest-bias-risk prompt in the library, since urgency directly affects response priority; not yet stress-tested with requests written in varying English proficiency or phrasing styles; recommend targeted bias testing (same request content, varied phrasing) before wider rollout, alongside routine supervisor spot-checks across a diverse sample of routine tickets, not only High-urgency ones |
 
-**Overall risk rating: MEDIUM** - high automation is appropriate for routing, provided safety-flagged and High-urgency tickets always receive human review before action is taken.
+**Overall risk rating: MEDIUM** - high automation is appropriate for routing, provided safety-flagged and High-urgency tickets always receive human review before action is taken, and phrasing-based bias in urgency classification is tested before full deployment.
 
 ---
 
