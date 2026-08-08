@@ -65,9 +65,9 @@ Full version history, test cases, and observed outputs for each prompt are docum
 
 ## References
 
-- Deloitte. (2025a). *The 2025 European Hotel Industry and Investment Survey*. Deloitte UK. https://www.deloitte.com/uk/en/Industries/consumer/research/european-hotel-industry-and-investment-survey.html
-- Deloitte. (2025b). *Future of Hospitality: AI-Driven Industry Trends*. Deloitte US. https://www.deloitte.com/us/en/Industries/consumer/articles/future-of-hospitality-ai-innovation.html
-- McKinsey & Company. (2024). *The state of AI in early 2024: Gen AI adoption spikes and starts to generate value*. McKinsey & Company. https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2024
+- Deloitte. (2025a). *The 2025 European hotel industry and investment survey*. Deloitte UK. https://www.deloitte.com/uk/en/Industries/consumer/research/european-hotel-industry-and-investment-survey.html
+- Deloitte. (2025b). *Future of hospitality: AI-driven industry trends*. Deloitte US. https://www.deloitte.com/us/en/Industries/consumer/articles/future-of-hospitality-ai-innovation.html
+- McKinsey & Company. (2024). *The state of AI in early 2024: Gen AI adoption spikes and starts to generate value*. https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2024
 
 ## Repository Structure
 
