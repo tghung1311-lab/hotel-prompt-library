@@ -81,8 +81,10 @@ Identifying recurring themes across guest feedback is currently done by manually
 | Model recommends operational action beyond its scope (confirmed in v1.0 test) | Low-Medium | Explicit scope limit to theme identification only; resolved in v1.1 testing |
 | Theme categorisation varies between reporting periods, reducing comparability | Medium | Fixed output format aids consistency, though category labels are not drawn from a fixed list - a known limitation for long-term trend tracking |
 | Sample size not stated, so readers may not gauge how many comments informed each theme | Low | Comment reference column shows exact source count per theme |
+| Privacy / data security - guest comments may include names or identifying details sent to an external model | Medium | Strip guest names and identifying details before comments are compiled for input; route through an enterprise/private deployment with data-retention controls |
+| Bias in theme weighting if certain guest demographics are overrepresented in the sample (e.g. only English-language reviews compiled) | Medium (untested) | Not yet tested against a demographically or linguistically skewed sample; recommend compiling comments from all available languages/channels before summarising, and flagging when a sample is not broadly representative of the guest base |
 
-**Overall risk rating: LOW-MEDIUM** - internal reporting tool with limited direct guest impact; primary risk is misinterpretation of scale rather than guest-facing harm.
+**Overall risk rating: LOW-MEDIUM** - internal reporting tool with limited direct guest impact; primary risks are misinterpretation of scale and unrepresentative sampling rather than guest-facing harm, though privacy of guest comments and sampling bias both require attention before scaling this to larger feedback volumes.
 
 ---
 
