@@ -57,7 +57,7 @@ Reporting cycle -> P10 (feedback theme summary)
 
 Automation levels and testing depth in this library are intentionally proportionate to risk, not applied uniformly. P04 and P06 (both rated Overall Risk: HIGH) received the most extensive testing - including adversarial (prompt injection) and legal-signal test cases - and are the only two prompts developed to v1.2. Lower-risk prompts (P01, P03, P09) required only one round of revision once grounding and format constraints were added.
 
-No prompt in this library is treated as a complete organisational control. Safety- and complaint-related prompts (P04, P06) explicitly require full human review before every send; none of the automation levels assigned imply autonomous action on compensation, legal, or safety matters.
+No prompt in this library is treated as a complete organisational control. Safety- and complaint-related prompts (P04, P06) explicitly require full human review before every send; none of the automation levels assigned imply autonomous action on compensation, legal, or safety matters. This precaution reflects a wider pattern identified by McKinsey: as generative AI adoption accelerates, most organisations still lack basic governance structures for managing AI risk, such as a body with authority over responsible AI decisions (McKinsey & Company, 2024).
 
 ## Iteration Evidence
 
@@ -67,6 +67,7 @@ Full version history, test cases, and observed outputs for each prompt are docum
 
 - Deloitte. (2025a). *The 2025 European Hotel Industry and Investment Survey*. Deloitte UK. https://www.deloitte.com/uk/en/Industries/consumer/research/european-hotel-industry-and-investment-survey.html
 - Deloitte. (2025b). *Future of Hospitality: AI-Driven Industry Trends*. Deloitte US. https://www.deloitte.com/us/en/Industries/consumer/articles/future-of-hospitality-ai-innovation.html
+- McKinsey & Company. (2024). *The state of AI in early 2024: Gen AI adoption spikes and starts to generate value*. McKinsey & Company. https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2024
 
 ## Repository Structure
 
