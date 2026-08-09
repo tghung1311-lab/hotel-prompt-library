@@ -45,8 +45,8 @@ Reporting cycle -> P10 (feedback theme summary)
 
 ## Prompting Strategies Used
 
-- **RACE structure** (Role, Action, Context, Expected output) applied consistently across all 10 prompts to ensure each prompt defines a clear role, a single precise action, sufficient business context, and a checkable expected output.
-- **Grounding constraints** ("using ONLY the information provided... do not invent") used in every prompt to reduce hallucination risk, particularly for pricing (P01, P02), policy (P03), and factual incident details (P04, P06). This technique - restricting the model to supplied information only - is a documented practice for reducing hallucination in production LLM systems (Anthropic, n.d.).
+- **RACE structure** (Role, Action, Context, Expected output) applied consistently across all 10 prompts to ensure each prompt defines a clear role, a single precise action, sufficient business context, and a checkable expected output. Explicit role-setting is a documented technique for focusing a model's behaviour and tone (Anthropic, n.d.-b).
+- **Grounding constraints** ("using ONLY the information provided... do not invent") used in every prompt to reduce hallucination risk, particularly for pricing (P01, P02), policy (P03), and factual incident details (P04, P06). This technique - restricting the model to supplied information only - is a documented practice for reducing hallucination in production LLM systems (Anthropic, n.d.-a).
 - **Structured output (JSON)** used in P05 to support system integration for automated ticket routing, rather than free-text output.
 - **Explicit scope restrictions** used to prevent the model from exceeding its intended role - e.g. P04 and P06 prohibit offering compensation, P05 and P08 prohibit suggesting remedies/operational changes beyond the task.
 - **Fault-language prohibition** developed specifically for P04 and P06 after testing revealed the model would use subtly liability-admitting language (e.g. "no guest should experience this") even when explicit compensation was already restricted.
@@ -65,7 +65,8 @@ Full version history, test cases, and observed outputs for each prompt are docum
 
 ## References
 
-- Anthropic. (n.d.). *Reduce hallucinations*. Claude Platform Docs. https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations
+- Anthropic. (n.d.-a). *Reduce hallucinations*. Claude Platform Docs. https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations
+- Anthropic. (n.d.-b). *Prompting best practices*. Claude Platform Docs. https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
 - Deloitte. (2025a). *The 2025 European hotel industry and investment survey*. Deloitte UK. https://www.deloitte.com/uk/en/Industries/consumer/research/european-hotel-industry-and-investment-survey.html
 - Deloitte. (2025b). *Future of hospitality: AI-driven industry trends*. Deloitte US. https://www.deloitte.com/us/en/Industries/consumer/articles/future-of-hospitality-ai-innovation.html
 - McKinsey & Company. (2024). *The state of AI in early 2024: Gen AI adoption spikes and starts to generate value*. https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2024
